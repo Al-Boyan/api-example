@@ -1,3 +1,15 @@
+const searchBtn = document.getElementById("button-addon2");
+const searchFeild2 = document.getElementById("search-feild");
+
+searchFeild2.addEventListener("keypress", function (event) {
+    // event.preventDefault();
+    if (event.key == "Enter") {
+        searchBtn.click();
+    }
+});
+
+
+
 const searchFood = () => {
     const searchFeild = document.getElementById('search-feild');
     const searchText = searchFeild.value;
@@ -17,10 +29,10 @@ const searchFood = () => {
 const displaySearchResult = meals => {
     const searchReasult = document.getElementById('search-result');
     searchReasult.textContent = ``;
-    if (meals.length == 0) {
+    if (meals == undefined) {
         const NoResultDiv = document.createElement('div');
         NoResultDiv.innerHTML = `
-        <h2 class="fs-1 fw-bold my-5 text-center text-danger">No recipies are found </h2>`;
+        <h2 class="fs-1 fw-bold text-danger text-center">No recipies are found </h2>`;
         searchReasult.appendChild(NoResultDiv);
     }
     meals.forEach(meal => {
@@ -50,6 +62,7 @@ const loadMealDetails = mealId => {
 
 const displayMealDetail = meal => {
     console.log(meal);
+    document.getElementById('meal-details').textContent = '';
     const mealDetails = document.getElementById('meal-details');
     const div = document.createElement('div');
     div.classList.add('card');
